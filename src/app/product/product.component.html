@@ -1,25 +1,27 @@
 <div class="container">
-    <h1>Product List
+   <h1>Product List
       <a [routerLink]="['/product-create']" class="btn btn-default btn-lg">
-        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
       </a>
-    </h1>
-    <table class="table">
+   </h1>
+   <table class="table">
       <thead>
-        <tr>
-          <th>Name</th>
-          <th>Sub Category</th>
-          <th>Price</th>
-          <th>Action</th>
-        </tr>
+         <tr>
+            <th>Name</th>
+            <th>Sub Category</th>
+            <th>Price</th>
+            <th>Action</th>
+         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let product of products">
-          <td>{{ product.name }}</td>
-          <td>{{ product.sub_category }}</td>
-          <td>{{ product.price }}</td>
-          <td><a [routerLink]="['/product-details', product._id]">Show Detail</a></td>
-        </tr>
+         <tr *ngFor="let product of products">
+            <td>{{ product.name }}</td>
+            <td>{{ product.sub_category }}</td>
+            <td>{{ product.price }}</td>
+            <td>
+               <a [routerLink]="['/product-details', product._id]">Show Detail</a>
+            </td>
+         </tr>
       </tbody>
-    </table>
-  </div>
+   </table>
+</div>

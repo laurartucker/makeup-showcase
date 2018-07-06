@@ -13,49 +13,34 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 const appRoutes: Routes = [
-  {
-    path: 'products',
-    component: ProductComponent,
-    data: { title: 'Product List' }
-  },
-  {
-    path: 'product-details/:id',
-    component: ProductDetailComponent,
-    data: { title: 'Product Details' }
-  },
-  {
-    path: 'product-create',
-    component: ProductCreateComponent,
-    data: { title: 'Create Product' }
-  },
-  {
-    path: 'product-edit/:id',
-    component: ProductEditComponent,
-    data: { title: 'Edit Product' }
-  },
-  { path: '',
-    redirectTo: '/products',
-    pathMatch: 'full'
-  }
+   {
+      path: 'products',
+      component: ProductComponent
+   },
+   {
+      path: '',
+      redirectTo: '/products',
+      pathMatch: 'full'
+   }
 ];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ProductComponent,
-    ProductDetailComponent,
-    ProductCreateComponent,
-    ProductEditComponent
-  ],
-  imports: [
-    RouterModule.forRoot(appRoutes),
-    BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+   declarations: [
+      AppComponent,
+      ProductComponent,
+      ProductDetailComponent,
+      ProductCreateComponent,
+      ProductEditComponent
+   ],
+   imports: [
+      RouterModule.forRoot(appRoutes),
+      BrowserModule,
+      FormsModule,
+      ReactiveFormsModule,
+      HttpClientModule,
+      BrowserAnimationsModule,
+   ],
+   providers: [],
+   bootstrap: [AppComponent]
 })
 export class AppModule { }
