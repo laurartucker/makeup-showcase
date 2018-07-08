@@ -6,11 +6,11 @@ import { Observable } from 'rxjs';
 import Product from '../../../models/Product';
 
 @Component({
-   selector: 'app-product',
-   templateUrl: './product.component.html',
-   styleUrls: ['./product.component.scss']
+   selector: 'app-featured-products',
+   templateUrl: './featured-products.component.html',
+   styleUrls: ['./featured-products.component.scss']
 })
-export class ProductComponent implements OnInit {
+export class FeaturedProductsComponent implements OnInit {
 
    products: any;
    dataSource = new ProductDataSource(this.api);
@@ -20,6 +20,7 @@ export class ProductComponent implements OnInit {
    ngOnInit() {
       this.api.getProducts()
          .subscribe(res => {
+            console.log(res);
             this.products = res;
          }, err => {
             console.log(err);

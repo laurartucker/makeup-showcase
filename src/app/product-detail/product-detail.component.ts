@@ -7,11 +7,11 @@ import Product from '../../../models/Product';
 @Component({
    selector: 'app-product-detail',
    templateUrl: './product-detail.component.html',
-   styleUrls: ['./product-detail.component.css']
+   styleUrls: ['./product-detail.component.scss']
 })
 export class ProductDetailComponent implements OnInit {
 
-   product = {};
+   product: any;
 
    constructor(private route: ActivatedRoute, private api: ApiService, private router: Router) { }
 
@@ -22,7 +22,6 @@ export class ProductDetailComponent implements OnInit {
    getProductDetails(id) {
       this.api.getProduct(id)
          .subscribe(data => {
-            console.log(data);
             this.product = data;
          });
    }

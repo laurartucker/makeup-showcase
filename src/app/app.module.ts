@@ -10,12 +10,38 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { ProductCreateComponent } from './product-create/product-create.component';
 import { ProductEditComponent } from './product-edit/product-edit.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FeaturedProductsComponent } from './featured-products/featured-products.component';
+import { BrandsComponent } from './products/brands/brands.component';
+import { HeaderComponent } from './header/header.component';
+import { MenuComponent } from './header/menu/menu.component';
+import { LoginComponent } from './header/login/login.component';
 
 
 const appRoutes: Routes = [
    {
       path: 'products',
-      component: ProductComponent
+      component: ProductComponent,
+      data: { title: 'Product List' }
+   },
+   {
+      path: 'product-details/:id',
+      component: ProductDetailComponent,
+      data: { title: 'Product Details' }
+   },
+   {
+      path: 'product-create',
+      component: ProductCreateComponent,
+      data: { title: 'Create Product' }
+   },
+   {
+      path: 'featured-products',
+      component: FeaturedProductsComponent,
+      data: { title: 'Featured Products' }
+   },
+   {
+      path: 'product-edit/:id',
+      component: ProductEditComponent,
+      data: { title: 'Edit Product' }
    },
    {
       path: '',
@@ -30,7 +56,12 @@ const appRoutes: Routes = [
       ProductComponent,
       ProductDetailComponent,
       ProductCreateComponent,
-      ProductEditComponent
+      ProductEditComponent,
+      FeaturedProductsComponent,
+      BrandsComponent,
+      HeaderComponent,
+      MenuComponent,
+      LoginComponent
    ],
    imports: [
       RouterModule.forRoot(appRoutes),
