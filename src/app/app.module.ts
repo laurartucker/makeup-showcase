@@ -1,15 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { RouterModule, Routes } from '@angular/router';
 import { ProductComponent } from './product/product.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductCreateComponent } from './product-create/product-create.component';
 import { ProductEditComponent } from './product-edit/product-edit.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { FeaturedProductsComponent } from './featured-products/featured-products.component';
 import { BrandsComponent } from './products/brands/brands.component';
 import { HeaderComponent } from './header/header.component';
@@ -34,11 +34,6 @@ const appRoutes: Routes = [
       data: { title: 'Create Product' }
    },
    {
-      path: 'featured-products',
-      component: FeaturedProductsComponent,
-      data: { title: 'Featured Products' }
-   },
-   {
       path: 'product-edit/:id',
       component: ProductEditComponent,
       data: { title: 'Edit Product' }
@@ -49,7 +44,6 @@ const appRoutes: Routes = [
       pathMatch: 'full'
    }
 ];
-
 @NgModule({
    declarations: [
       AppComponent,
@@ -64,12 +58,13 @@ const appRoutes: Routes = [
       LoginComponent
    ],
    imports: [
-      RouterModule.forRoot(appRoutes),
       BrowserModule,
       FormsModule,
-      ReactiveFormsModule,
       HttpClientModule,
-      BrowserAnimationsModule,
+      RouterModule.forRoot(
+         appRoutes,
+         { enableTracing: true } // <-- debugging purposes only
+      )
    ],
    providers: [],
    bootstrap: [AppComponent]

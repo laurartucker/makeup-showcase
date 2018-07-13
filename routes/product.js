@@ -9,12 +9,13 @@ router.get('/', function (req, res, next) {
    Product.find(function (err, products) {
       if (err) return next(err);
       res.json(products);
-   });
+   }).limit(20);
 });
 
 /* GET SINGLE PRODUCT BY ID */
 router.get('/:id', function (req, res, next) {
    Product.findById(req.params.id, function (err, post) {
+      console.log("This is the id: " + req.params.id);
       if (err) return next(err);
       res.json(post);
    });

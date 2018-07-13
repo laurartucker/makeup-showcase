@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ApiService } from '../api.service';
 import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 
 @Component({
@@ -19,7 +18,7 @@ export class ProductEditComponent implements OnInit {
   publisher:string = '';
   published_year:string = '';
 
-  constructor(private router: Router, private route: ActivatedRoute, private api: ApiService, private formBuilder: FormBuilder) { }
+  constructor(private router: Router, private route: ActivatedRoute, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.getProduct(this.route.snapshot.params['id']);
@@ -34,31 +33,30 @@ export class ProductEditComponent implements OnInit {
   }
 
   getProduct(id) {
-    this.api.getProduct(id).subscribe(data => {
-      this.id = data._id;
-      this.productForm.setValue({
-        isbn: data.isbn,
-        title: data.title,
-        description: data.description,
-        author: data.author,
-        publisher: data.publisher,
-        published_year: data.published_year
-      });
-    });
+   //  this.api.getProduct(id).subscribe(data => {
+   //    this.id = data._id;
+   //    this.productForm.setValue({
+   //      isbn: data.isbn,
+   //      title: data.title,
+   //      description: data.description,
+   //      author: data.author,
+   //      publisher: data.publisher,
+   //      published_year: data.published_year
+   //    });
+   //  });
   }
 
   onFormSubmit(form:NgForm) {
-    this.api.updateProduct(this.id, form)
-      .subscribe(res => {
-          let id = res['_id'];
-          this.router.navigate(['/product-details', id]);
-        }, (err) => {
-          console.log(err);
-        }
-      );
+   //  this.api.updateProduct(this.id, form)
+   //    .subscribe(res => {
+   //        let id = res['_id'];
+   //        this.router.navigate(['/product-details', id]);
+   //      }, (err) => {
+   //        console.log(err);
+   //      }
+   //    );
+   //#TODO
   }
 
-  productDetails() {
-    this.router.navigate(['/product-details', this.id]);
-  }
+  
 }

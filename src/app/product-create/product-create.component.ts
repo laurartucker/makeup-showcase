@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ApiService } from '../api.service';
 import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 
 @Component({
@@ -21,7 +20,7 @@ export class ProductCreateComponent implements OnInit {
    price: string = '';
    name: string = '';
 
-   constructor(private router: Router, private api: ApiService, private formBuilder: FormBuilder) { }
+   constructor(private router: Router, private formBuilder: FormBuilder) { }
 
    ngOnInit() {
       this.productForm = this.formBuilder.group({
@@ -35,12 +34,13 @@ export class ProductCreateComponent implements OnInit {
    }
 
    onFormSubmit(form: NgForm) {
-      this.api.postProduct(form)
-         .subscribe(res => {
-            let id = res['_id'];
-            this.router.navigate(['/product-details', id]);
-         }, (err) => {
-            console.log(err);
-         });
+      // this.http.post(.postProduct(form)
+      //    .subscribe(res => {
+      //       let id = res['_id'];
+      //       this.router.navigate(['/product-details', id]);
+      //    }, (err) => {
+      //       console.log(err);
+      //    });
+      //#TODO Finish this
    }
 }

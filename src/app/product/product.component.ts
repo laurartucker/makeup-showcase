@@ -1,42 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../api.service';
-import { DataSource } from '@angular/cdk/collections';
-import { Observable } from 'rxjs';
-
-import Product from '../../../models/Product';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
-   selector: 'app-product',
-   templateUrl: './product.component.html',
-   styleUrls: ['./product.component.scss']
+  selector: 'app-product',
+  templateUrl: './product.component.html',
+  styleUrls: ['./product.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class ProductComponent implements OnInit {
 
-   products: any;
-   dataSource = new ProductDataSource(this.api);
+  products: any;
 
-   constructor(private api: ApiService) { }
+  constructor(private http: HttpClient) { }
 
-   ngOnInit() {
-      this.api.getProducts()
-         .subscribe(res => {
-            this.products = res;
-         }, err => {
-            console.log(err);
-         });
-   }
-}
+  ngOnInit() {
+    this.http.get('/product').subscribe(data => {
+      console.log(data);
+      this.products = data;
+    });
+  }
 
-export class ProductDataSource extends DataSource<any> {
-   constructor(private api: ApiService) {
-      super()
-   }
-
-   connect() {
-      return this.api.getProducts();
-   }
-
-   disconnect() {
-
-   }
 }

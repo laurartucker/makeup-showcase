@@ -5,7 +5,7 @@
  */
 
 var app = require('../app');
-var debug = require('debug')('makeup-stash:server');
+var debug = require('debug')('makeup-showcase:server');
 var http = require('http');
 
 /**

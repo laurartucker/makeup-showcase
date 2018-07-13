@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../api.service';
 import { DataSource } from '@angular/cdk/collections';
 import { Observable } from 'rxjs';
 
@@ -13,31 +12,19 @@ import Product from '../../../models/Product';
 export class FeaturedProductsComponent implements OnInit {
 
    products: any;
-   dataSource = new ProductDataSource(this.api);
+   //dataSource = new ProductDataSource(this.api);
 
-   constructor(private api: ApiService) { }
+   constructor() { }
 
    ngOnInit() {
-      this.api.getProducts()
-         .subscribe(res => {
-            console.log(res);
-            this.products = res;
-         }, err => {
-            console.log(err);
-         });
+      // this.api.getProducts()
+      //    .subscribe(res => {
+      //       console.log(res);
+      //       this.products = res;
+      //    }, err => {
+      //       console.log(err);
+      //    });
+      //#TODO
    }
 }
 
-export class ProductDataSource extends DataSource<any> {
-   constructor(private api: ApiService) {
-      super()
-   }
-
-   connect() {
-      return this.api.getProducts();
-   }
-
-   disconnect() {
-
-   }
-}
